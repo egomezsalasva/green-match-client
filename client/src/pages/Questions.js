@@ -132,17 +132,21 @@ const Questions = () => {
 
     const history = useHistory()
     const onClickHandler = (answerId) => {
-        if( pageNum < questionsData.length){ setPageNum(++pageNum) }
         if( dataIndex < questionsData.length - 1){ setDataIndex(++dataIndex) }
-        history.push(`/onboarding/question/${pageNum}`)
-        console.log(answerId)
+        if( pageNum <= questionsData.length){ 
+            setPageNum(++pageNum) 
+            history.push(`/onboarding/question/${pageNum}`)
+        }
+        if( pageNum > questionsData.length){  
+            history.push(`/finding-result`)
+        } 
     }
 
   return (
     <QuestionsContainer>
         <div className="contentWrapper">
             <div className="quizHeader">
-                <span>{`${pageNum} of 7`}</span>
+                <span>{`${pageNum} of ${questionsData.length}`}</span>
             </div>
             <div className="quizQuestion">
                 <div className="quizText">{questionsData[dataIndex].text}</div>
@@ -153,7 +157,7 @@ const Questions = () => {
             <div className="quizAnswers">
                 {questionsData[dataIndex].answers.map( answer => {
                     return(
-                        <div className="answerButton" onClick={() => onClickHandler(answer.id)} key={answer.id}>
+                        <div className="answerButton" onClick={() => onClickHandler()} key={answer.id}>
                             <div className="answerText">
                                 <div>
                                     <div className="answerButtonHeader">{answer.text}</div>

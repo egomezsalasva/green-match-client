@@ -80,14 +80,16 @@ const Nav = () => {
   return (
     <NavContainer>
 
-      <div className="logoContainer">
-        <img src={logo} alt="logo" className="logo" />
-        <div className="logoText">Green Match</div>
-      </div>
+      <Link to="/">
+        <div className="logoContainer">
+          <img src={logo} alt="logo" className="logo" />
+          <div className="logoText">Green Match</div>
+        </div>
+      </Link>
 
       <div className="navContainer">
         <Link to="/subscribe">Subscribe</Link>
-        <Link to="/shop">Shop</Link>
+        <Link to="/cbd">Shop</Link>
         <Link to="/learn">Learn</Link>
         <Link to="/legal-info">Legal Info</Link>
         <Link to="/growers">Growers</Link>
